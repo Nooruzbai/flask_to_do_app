@@ -1,0 +1,35 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#    <div class="container mt-5">#}
+{#        <h1 class="text-primary">Create a New To-Do</h1>#}
+{#        <form method="POST" action="{{ url_for('to_do.create_to_do') }}">#}
+{#            {{ form.hidden_tag() }}#}
+{#            <div class="mb-3">#}
+{#                {{ form.name.label(class="form-label text-primary") }}#}
+{#                {{ form.name() }}#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                {{ form.description.label(class="form-label text-primary") }}#}
+{#                {{ form.description() }}#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                {{ form.due_date.label(class="form-label text-primary") }}#}
+{#                {{ form.due_date() }}#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                {{ form.priority.label(class="form-label text-primary") }}#}
+{#                {{ form.priority() }}#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                {{ form.status.label(class="form-label text-primary") }}#}
+{#                {{ form.status() }}#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                {{ form.submit() }}#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{##}
+{##}
+{#{% endblock %}#}

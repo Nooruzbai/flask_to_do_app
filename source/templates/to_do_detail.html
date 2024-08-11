@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-primary">To-Do Details</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ todo.name }}</h5>
+                <p class="card-text">{{ todo.description }}</p>
+                <p class="card-text">
+                    <strong>Due Date:</strong> {{ todo.due_date.strftime('%Y-%m-%d %H:%M') }}
+                </p>
+                <p class="card-text">
+                    <strong>Priority:</strong> {{ todo.priority.capitalize() }}
+                </p>
+                <p class="card-text">
+                    <strong>Status:</strong> {{ todo.status.replace('_', ' ').capitalize() }}
+                </p>
+                <a href="{{ url_for('to_do.list_todos') }}" class="btn btn-primary">Back to List</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
