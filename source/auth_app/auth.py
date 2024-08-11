@@ -14,7 +14,7 @@ auth = Blueprint('auth', __name__)
 def login():
     if current_user.is_authenticated:
         flash('You are already logged in', category='info')
-        return redirect(url_for('to_do.index'))
+        return redirect(url_for('to_do.list_to_dos'))
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
@@ -23,7 +23,7 @@ def login():
         if user:
             if check_password_hash(user.password_hash, password):
                 login_user(user, remember=True)
-                return redirect(url_for('to_do.list_todos'))
+                return redirect(url_for('to_do.list_to_dos'))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:

@@ -1,37 +1,34 @@
-{#<div class="container">#}
-{#    {% block content %}#}
-{#        <div class="container mt-5">#}
-{#            <h1 class="text-primary">To-Do List</h1>#}
-{##}
-{#            <div class="d-flex justify-content-between align-items-center my-4">#}
-{#                <a href="{{ url_for('to_do.create_to_do') }}" class="btn btn-primary">Create To-Do</a>#}
-{#            </div>#}
-{##}
-{#            <ul class="list-group">#}
-{#                {% for todo in todos %}#}
-{#                    <li class="list-group-item d-flex justify-content-between align-items-center">#}
-{#                        <div>#}
-{#                            <h5 class="mb-1">{{ todo.name }}</h5>#}
-{#                            <p class="mb-1">{{ todo.description }}</p>#}
-{#                            <small>#}
-{#                                <span class="badge bg-secondary">{{ todo.due_date.strftime('%Y-%m-%d %H:%M') }}</span>#}
-{#                                <span class="badge bg-info text-dark">{{ todo.priority.capitalize() }}</span>#}
-{#                                <span class="badge bg-success">{{ todo.status.replace('_', ' ').capitalize() }}</span>#}
-{#                            </small>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <a href="{{ url_for('to_do.detail_todo', todo_id=todo.id) }}"#}
-{#                               class="btn btn-success btn-sm me-2">Details</a>#}
-{#                            <a href="{{ url_for('to_do.update_todo', todo_id=todo.id) }}"#}
-{#                               class="btn btn-warning btn-sm me-2">Update</a>#}
-{#                            <form action="{{ url_for('to_do.delete_todo', todo_id=todo.id) }}" method="post" style="display:inline;">#}
-{#                                <input type="hidden" name="_method" value="DELETE">#}
-{#                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>#}
-{#                            </form>#}
-{#                        </div>#}
-{#                    </li>#}
-{#                {% endfor %}#}
-{#            </ul>#}
-{#        </div>#}
-{#    {% endblock %}#}
-{#</div>#}
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <h1 class="text-primary">Create a New To-Do</h1>
+        <form method="POST" action="{{ url_for('to_do.to_do_update', todo_id=todo.id) }}">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.name.label(class="form-label text-primary") }}
+                {{ form.name() }}
+            </div>
+            <div class="mb-3">
+                {{ form.description.label(class="form-label text-primary") }}
+                {{ form.description() }}
+            </div>
+            <div class="mb-3">
+                {{ form.due_date.label(class="form-label text-primary") }}
+                {{ form.due_date() }}
+            </div>
+            <div class="mb-3">
+                {{ form.priority.label(class="form-label text-primary") }}
+                {{ form.priority() }}
+            </div>
+            <div class="mb-3">
+                {{ form.status.label(class="form-label text-primary") }}
+                {{ form.status() }}
+            </div>
+            <div class="mb-3">
+                {{ form.submit() }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

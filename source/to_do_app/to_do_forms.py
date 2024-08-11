@@ -29,3 +29,7 @@ class ToDoForm(FlaskForm):
     )
 
     submit = SubmitField('Create To-Do', render_kw={"class": "btn btn-primary"})
+
+
+class ToDoUpdateForm(ToDoForm):
+    submit = SubmitField('Update', render_kw={"class": "btn btn-primary"})
