@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import render_template, Blueprint, redirect, url_for, flash,  request, abort
 from flask_login import current_user, login_required
 from sqlalchemy.exc import SQLAlchemyError
@@ -14,8 +16,12 @@ to_do = Blueprint('to_do', __name__)
 def list_to_dos():
     try:
         todos = ToDo.query.filter_by(user_id=current_user.id).all()
+        for to_do in todos:
+            if to_do.due_date and to_do.due_date < datetime.now() and to_do.status != 'completed':
+                to_do.status = 'completed'
+                db.session.commit()
     except SQLAlchemyError as e:
-        flash('An error occurred while fetching your To-Do items.', 'danger')
+        flash('An error occurred while fetching. Try again.', 'danger')
     return render_template('list_to_dos.html', todos=todos, user=current_user)
 
 
