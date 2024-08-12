@@ -40,7 +40,11 @@
 
     {% block content %}
         <div class="container mt-5">
-            <h1 class="text-primary">To-Do List</h1>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="text-primary">To-Do List</h1>
+                <a href="{{ url_for('to_do.create_to_do') }}" class="btn btn-primary">Create To-Do</a>
+            </div>
+
 
             <ul class="list-group">
                 {% for todo in todos %}
